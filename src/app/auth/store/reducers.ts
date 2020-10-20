@@ -14,6 +14,7 @@ const authReducer = createReducer(
     }))
 );
 
+// tslint:disable-next-line:typedef
 export function reducer(state: AuthStateInterface, action: Action) {
     return authReducer(state, action);
 }
