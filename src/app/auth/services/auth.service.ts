@@ -14,6 +14,7 @@ export class AuthService {
     private http: HttpClient
   ) {}
   register(data: RegisterRequestInterface): Observable<CurrentUserInterface> {
-    return  this.http.post<AuthResponseInterface>(` ${environment.apiUrl}/users`, data ).pipe(pluck('user'));
+    return  this.http.post<AuthResponseInterface>(` ${environment.apiUrl}/users`, data )
+      .pipe(pluck('user'));
   }
 }

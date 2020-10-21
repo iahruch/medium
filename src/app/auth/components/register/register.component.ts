@@ -28,9 +28,6 @@ export class RegisterComponent implements OnInit {
     }
 
     onSubmit(): void {
-        console.log(this.form.value.username);
-        console.log(this.form.get('username').value);
-
-        this.store.dispatch(registerAction(this.form.value));
+        this.store.dispatch(registerAction( {request: {user: this.form.value}}));
     }
 }
