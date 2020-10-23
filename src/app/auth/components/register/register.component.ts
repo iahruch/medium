@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { select, Store } from '@ngrx/store';
 import { registerAction } from '../../store/actions/register.action';
-import { isSubmittingSelector } from '../../store/selectors';
+import { isSubmittingSelector, validationErrorsSelector } from '../../store/selectors';
+import { Observable } from 'rxjs';
+import { BackendErrorsInterface } from '../../../shared/types/backendErrors.interface';
 
 @Component({
     selector: 'mc-register',
@@ -11,7 +13,8 @@ import { isSubmittingSelector } from '../../store/selectors';
 })
 export class RegisterComponent implements OnInit {
     form: FormGroup;
-    isSubmitting$ = this.store.pipe(select(isSubmittingSelector));
+    isSubmitting$: Observable<boolean> = this.store.pipe(select(isSubmittingSelector));
+    backendErrors$: Observable<BackendErrorsInterface | null> = this.store.pipe(select(validationErrorsSelector));
 
     constructor(private fb: FormBuilder, private store: Store) {}
 

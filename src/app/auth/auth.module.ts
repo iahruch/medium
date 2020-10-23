@@ -9,6 +9,7 @@ import { StoreModule } from '@ngrx/store';
 import { reducer } from './store/reducers';
 import { AuthService } from './services/auth.service';
 import { RegisterEffect } from './store/effects/register.effect';
+import { SharedModule } from '../shared/shared.module';
 
 const routes: Routes = [
     {
@@ -30,6 +31,7 @@ const routes: Routes = [
         RouterModule.forChild(routes),
         FormsModule,
         ReactiveFormsModule,
+        SharedModule,
     ],
   providers: [AuthService],
 })
