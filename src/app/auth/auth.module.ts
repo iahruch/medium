@@ -10,6 +10,7 @@ import { reducer } from './store/reducers';
 import { AuthService } from './services/auth.service';
 import { RegisterEffect } from './store/effects/register.effect';
 import { SharedModule } from '../shared/shared.module';
+import { PersistanceService } from '../shared/services/persistance.service';
 
 const routes: Routes = [
     {
@@ -33,6 +34,6 @@ const routes: Routes = [
         ReactiveFormsModule,
         SharedModule,
     ],
-  providers: [AuthService],
+  providers: [AuthService, PersistanceService],
 })
 export class AuthModule {}
