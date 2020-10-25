@@ -5,7 +5,6 @@ import {
     isSubmittingSelector,
     validationErrorsSelector,
 } from '../../store/selectors';
-import { AuthService } from '../../services/auth.service';
 import { loginAction } from '../../store/actions/login.action';
 
 @Component({

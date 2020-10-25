@@ -9,6 +9,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { HttpClientModule } from '@angular/common/http';
 import { EffectsModule } from '@ngrx/effects';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
     declarations: [AppComponent],
@@ -23,6 +24,7 @@ import { EffectsModule } from '@ngrx/effects';
             maxAge: 25,
             logOnly: environment.production,
         }),
+        SharedModule,
     ],
     providers: [],
     bootstrap: [AppComponent],
