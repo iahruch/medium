@@ -6,15 +6,24 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { AuthResponseInterface } from '../types/authResponse.interface';
 import { pluck } from 'rxjs/operators';
-
+import { LoginRequestInterface } from '../types/loginRequest.interface';
 
 @Injectable()
 export class AuthService {
-  constructor(
-    private http: HttpClient
-  ) {}
-  register(data: RegisterRequestInterface): Observable<CurrentUserInterface> {
-    return  this.http.post<AuthResponseInterface>(` ${environment.apiUrl}/users`, data )
-      .pipe(pluck('user'));
-  }
+    constructor(private http: HttpClient) {}
+
+    register(data: RegisterRequestInterface): Observable<CurrentUserInterface> {
+        return this.http
+            .post<AuthResponseInterface>(` ${environment.apiUrl}/users`, data)
+            .pipe(pluck('user'));
+    }
+
+    login(data: LoginRequestInterface): Observable<CurrentUserInterface> {
+        return this.http
+            .post<AuthResponseInterface>(
+                `${environment.apiUrl}/users/login`,
+                data
+            )
+            .pipe(pluck('user'));
+    }
 }
