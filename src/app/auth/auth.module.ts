@@ -13,6 +13,7 @@ import { SharedModule } from '../shared/shared.module';
 import { PersistanceService } from '../shared/services/persistance.service';
 import { LoginComponent } from './components/login/login.component';
 import { LoginEffect } from './store/effects/login.effect';
+import { GetCurrentUserEffect } from './store/effects/getCurrentUser.effect';
 
 const routes: Routes = [
     {
@@ -30,7 +31,11 @@ const routes: Routes = [
     imports: [
         CommonModule,
         StoreModule.forFeature('auth', reducer),
-        EffectsModule.forFeature([RegisterEffect, LoginEffect]),
+        EffectsModule.forFeature([
+            RegisterEffect,
+            LoginEffect,
+            GetCurrentUserEffect,
+        ]),
         RouterModule.forChild(routes),
         FormsModule,
         ReactiveFormsModule,

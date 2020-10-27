@@ -7,9 +7,12 @@ import { AuthModule } from './auth/auth.module';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { EffectsModule } from '@ngrx/effects';
 import { SharedModule } from './shared/shared.module';
+import { AuthInterceptor } from './shared/services/auth.interceptor';
+import { PersistanceService } from './shared/services/persistance.service';
+import { GlobalFeedModule } from './globalFeed/globalFeed.module';
 
 @NgModule({
     declarations: [AppComponent],
@@ -25,8 +28,12 @@ import { SharedModule } from './shared/shared.module';
             logOnly: environment.production,
         }),
         SharedModule,
+        GlobalFeedModule,
     ],
-    providers: [],
+    providers: [
+        PersistanceService,
+        { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    ],
     bootstrap: [AppComponent],
 })
 export class AppModule {}

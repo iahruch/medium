@@ -26,4 +26,9 @@ export class AuthService {
             )
             .pipe(pluck('user'));
     }
+
+    getCurrentUser(): Observable<CurrentUserInterface> {
+        return this.http.get(`${environment.apiUrl}/user`).pipe(pluck('user'));
+    }
 }
+//https://conduit.productionready.io/api/user
