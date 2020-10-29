@@ -7,7 +7,8 @@ import { FeedComponent } from './components/feed/feed.component';
 
 @NgModule({
     imports: [CommonModule, RouterModule],
-    declarations: [BackendErrorsMsgComponent, TopBarComponent, FeedComponent],
-    exports: [BackendErrorsMsgComponent, TopBarComponent, FeedComponent],
+    declarations: [BackendErrorsMsgComponent, TopBarComponent],
+    exports: [BackendErrorsMsgComponent, TopBarComponent],
+    providers: [],
 })
 export class SharedModule {}

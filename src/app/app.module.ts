@@ -12,7 +12,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { SharedModule } from './shared/shared.module';
 import { AuthInterceptor } from './shared/services/auth.interceptor';
 import { PersistanceService } from './shared/services/persistance.service';
-import { GlobalFeedModule } from './globalFeed/globalFeed.module';
+import { GlobalFeedModule } from './globalFeed/components/global-feed/globalFeed.module';
 
 @NgModule({
     declarations: [AppComponent],
