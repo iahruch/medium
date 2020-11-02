@@ -1,1 +1,40 @@
-<p>Feed works!</p>
+
+
+<div *ngIf="isLoading$ | async">Loading...</div>
+
+<div *ngIf="error$ | async">Some error happend </div>
+
+<div *ngIf="feed$ | async">
+
+    <div class="article-meta" *ngFor="let article of (feed$ | async).articles">
+      <div class="article-preview">
+        <div class="article-meta">
+          <a [routerLink]="['/profile', article.author.username]">
+            <img [src]="article.author.image" />
+          </a>
+
+          <div class="info">
+            <a [routerLink]="['/profile', article.author.username]">
+              {{article.author.username}}
+            </a>
+            <span class="date"> {{article.createAt}}</span>
+          </div>
+
+          <div class="pull-xs-right">
+            ADD FAVORITE
+          </div>
+        </div>
+
+        <a [routerLink]="['/articles', article.slug]" class="preview-link">
+        <h1>{{article.title}}</h1>
+        <p>{{article.description}}</p>
+        HERE LIST OF TEGS
+      </a>
+      </div>
+  </div>
+  PAGINATION
+</div>
+
+<!--<button class="btn btn-sm btn-outline-primary">-->
+<!--  <i class="ion-heart"></i> 0-->
+<!--</button>-->
