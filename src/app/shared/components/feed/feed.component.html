@@ -32,7 +32,12 @@
       </a>
       </div>
   </div>
-  PAGINATION
+  <mc-pagination
+    [total]="(feed$ | async).articlesCount"
+    [limit]="limit"
+    [url]="baseUrl"
+    [currentPage]="currentPage"
+  ></mc-pagination>>
 </div>
 
 <!--<button class="btn btn-sm btn-outline-primary">-->
