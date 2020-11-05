@@ -65,6 +65,6 @@ export class FeedComponent implements OnInit {
         const apiUrlWithParams = `${this.apiUrlProps}?${stingifiedParams}`;
         this.store.dispatch(getFeedAction({ url: apiUrlWithParams }));
 
-        console.log('apiUrlWithParams ', apiUrlWithParams);
+        // console.log('apiUrlWithParams ', apiUrlWithParams);
     }
 }
