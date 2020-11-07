@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { LoadingComponent } from './components/errorMessage.component';
+import { LoadingComponent } from './components/loading.component';
 
 @NgModule({
     imports: [CommonModule],

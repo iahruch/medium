@@ -5,7 +5,7 @@ import { Component, Input, OnInit } from '@angular/core';
     template: '<div>{{messageProps}}</div>',
 })
 export class ErrorMessageComponent implements OnInit {
-    @Input('message') messageProps: string = 'SOmething went wrong';
+    @Input('message') messageProps: string = 'Something went wrong';
 
     ngOnInit(): void {}
 }

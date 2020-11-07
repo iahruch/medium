@@ -27,6 +27,7 @@ export class FeedComponent implements OnInit {
     limit = environment.limit;
     baseUrl: string;
     currentPage: number;
+
     constructor(
         private store: Store,
         private router: Router,

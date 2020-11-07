@@ -8,7 +8,7 @@ import { StoreModule } from '@ngrx/store';
 import { reducers } from './store/reducers';
 import { RouterModule } from '@angular/router';
 import { ErrorMessageModule } from '../errorMessage/errorMessage.module';
-import { LoadingModule } from '../loading/errorMessage.module';
+import { LoadingModule } from '../loading/loading.module';
 import { PaginationModule } from '../../pagination/pagination.module';
 import { TagListModule } from '../tagList/tagList.module';
 
