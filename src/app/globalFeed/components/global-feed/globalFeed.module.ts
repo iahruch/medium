@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { FeedModule } from '../../../shared/components/feed/feed.module';
 import { BannerModule } from '../../../shared/components/banner/banner.module';
 import { PopularTagsModule } from '../../../shared/components/popularTags/popularTags.module';
+import { FeedTogglerModule } from '../../../shared/components/feedToggler/feedToggler.module';
 
 const routes = [
     {
@@ -21,6 +22,7 @@ const routes = [
         FeedModule,
         BannerModule,
         PopularTagsModule,
+        FeedTogglerModule,
     ],
     exports: [],
 })
