@@ -12,8 +12,9 @@ import { EffectsModule } from '@ngrx/effects';
 import { SharedModule } from './shared/shared.module';
 import { AuthInterceptor } from './shared/services/auth.interceptor';
 import { PersistanceService } from './shared/services/persistance.service';
-import { GlobalFeedModule } from './globalFeed/components/global-feed/globalFeed.module';
+import { GlobalFeedModule } from './globalFeed/globalFeed.module';
 import { StoreRouterConnectingModule, routerReducer } from '@ngrx/router-store';
+import { YourFeedModule } from './yourFeed/yourFeed.module';
 
 @NgModule({
     declarations: [AppComponent],
@@ -31,6 +32,7 @@ import { StoreRouterConnectingModule, routerReducer } from '@ngrx/router-store';
         }),
         SharedModule,
         GlobalFeedModule,
+        YourFeedModule,
     ],
     providers: [
         PersistanceService,
