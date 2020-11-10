@@ -11,8 +11,10 @@
       </a>
     </li>
     <li class="nav-item">
-      <a *ngIf="tagNameProps" [routerLink]="['/tags', tagNameProps]" class="nav-link" routerLinkActive="active">
-       #{{tagNameProps}}
+      <a *ngIf="tagNameProps" [routerLink]="['/tags', tagNameProps]" class="nav-link" routerLinkActive="active"
+         [routerLinkActiveOptions]="{exact: true, _hack_: tagNameProps}">
+        <i class="ion-pound"></i>
+        {{tagNameProps}}
       </a>
     </li>
   </ul>

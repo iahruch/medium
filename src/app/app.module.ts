@@ -15,6 +15,7 @@ import { PersistanceService } from './shared/services/persistance.service';
 import { GlobalFeedModule } from './globalFeed/globalFeed.module';
 import { StoreRouterConnectingModule, routerReducer } from '@ngrx/router-store';
 import { YourFeedModule } from './yourFeed/yourFeed.module';
+import { TagFeedModule } from './tagFeed/tagFeed.module';
 
 @NgModule({
     declarations: [AppComponent],
@@ -33,6 +34,7 @@ import { YourFeedModule } from './yourFeed/yourFeed.module';
         SharedModule,
         GlobalFeedModule,
         YourFeedModule,
+        TagFeedModule,
     ],
     providers: [
         PersistanceService,

@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { FeedComponent } from './feed.component';
+import { FeedComponent } from './components/feed.component';
 import { FeedServices } from './services/feed.services';
 import { CommonModule } from '@angular/common';
 import { EffectsModule } from '@ngrx/effects';
