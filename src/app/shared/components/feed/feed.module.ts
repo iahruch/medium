@@ -27,4 +27,5 @@ import { TagListModule } from '../tagList/tagList.module';
     exports: [FeedComponent],
     providers: [FeedServices],
 })
+
 export class FeedModule {}
