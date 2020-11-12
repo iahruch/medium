@@ -1,7 +1,52 @@
-article
+
+<div class="article-page">
+  <div class="banner">
+    <div class="container">
+      <h1>{{article?.title}}</h1>
+
+      <div class="article-meta">
+        <a class="author" [routerLink]="['/profile', article?.author.username]">
+          <img [src]="article?.author.image" [alt]="'image' + article?.author.username ">
+        </a>
+
+        <div class="info">
+          <a class="author" [routerLink]="['/profile', article?.author.username]">
+            {{article?.author.username}}
+          </a>
+          <span class="date"> {{article?.createdAt}} </span>
+        </div>
+        <span *ngIf="isAuthor$ | async">
+          <a class="btn btn-sm btn-outline-secondary" [routerLink]="['/article', article.slug, 'edit']">
+            <i class="ion-edit"></i>
+            Edit article
+          </a>
+          <a class="btn btn-sm btn-outline-secondary" (click)="deleteArticle()" >
+            <i class="ion-trash"></i>
+              Delete article
+          </a>
+        </span>
 
 
+      </div>
 
+    </div>
+  </div>
+
+  <div class="container">
+    <mc-loading *ngIf="isLoading$ | async"></mc-loading>
+    <mc-error-message *ngIf="error$ | async"></mc-error-message>
+
+    <div class="row article-content" *ngIf="article">
+      <div class="col-xs-12">
+        <div>
+          <p>{{article.body}}</p>
+        </div>
+        <mc-tag-list [tags]="article.tagList"></mc-tag-list>
+      </div>
+    </div>
+
+  </div>
+</div>
 <!--author:-->
 <!--      bio: null-->
 <!--      following: false-->

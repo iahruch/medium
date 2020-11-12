@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { map, catchError, switchMap, tap } from 'rxjs/operators';
+import { map, catchError, switchMap } from 'rxjs/operators';
 import { of } from 'rxjs';
 
-import { ArticleServices as SharedArticleService } from '../../../../services/article.services';
+import { ArticleService as SharedArticleService } from '../../../../services/article.services';
 import { ArticleInterface } from '../../../../types/article.interface';
 import {
     getArticleAction,

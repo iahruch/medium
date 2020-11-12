@@ -7,7 +7,7 @@ import { pluck } from 'rxjs/operators';
 import { ArticleInterface } from '../types/article.interface';
 
 @Injectable()
-export class ArticleServices {
+export class ArticleService {
     constructor(private http: HttpClient) {}
 
     getArticle(slug: string): Observable<ArticleInterface> {
