@@ -1,17 +1,19 @@
 import { CreateArticleStateInterface } from '../types/createArticleState.interface';
 import { Action, createReducer, on } from '@ngrx/store';
+
 import {
     createArticleAction,
     createArticleFailureAction,
     createArticleSuccessAction,
 } from './actions/createArticle.action';
+import { routerNavigationAction } from '@ngrx/router-store';
 
 const initialState: CreateArticleStateInterface = {
     isSubmitting: false,
     validationErrors: null,
 };
 
-export const createArticleReducer = createReducer(
+const createArticleReducer = createReducer(
     initialState,
     on(createArticleAction, (state) => ({
         ...state,
@@ -25,9 +27,10 @@ export const createArticleReducer = createReducer(
         ...state,
         isSubmitting: false,
         validationErrors: action.errors,
-    }))
+    })),
+    on(routerNavigationAction, (state) => (state = initialState))
 );
 
 export function reducers(state: CreateArticleStateInterface, action: Action) {
-    createArticleReducer(state, action);
+    return createArticleReducer(state, action);
 }
