@@ -1,6 +1,5 @@
 import { CreateArticleStateInterface } from '../types/createArticleState.interface';
 import { Action, createReducer, on } from '@ngrx/store';
-
 import {
     createArticleAction,
     createArticleFailureAction,
