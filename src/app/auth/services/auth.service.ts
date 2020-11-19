@@ -7,6 +7,7 @@ import { environment } from '../../../environments/environment';
 import { AuthResponseInterface } from '../types/authResponse.interface';
 import { pluck } from 'rxjs/operators';
 import { LoginRequestInterface } from '../types/loginRequest.interface';
+import { CurrentUserInputInterface } from '../../shared/types/currentUserInput.interface';
 
 @Injectable()
 export class AuthService {
@@ -30,5 +31,14 @@ export class AuthService {
     getCurrentUser(): Observable<CurrentUserInterface> {
         return this.http.get(`${environment.apiUrl}/user`).pipe(pluck('user'));
     }
+
+    updateCurrentUser(
+        currentUserInput: CurrentUserInputInterface
+    ): Observable<CurrentUserInterface> {
+        return this.http
+            .put(`${environment.apiUrl}/user`, currentUserInput)
+            .pipe(pluck('user'));
+    }
 }
+
 //https://conduit.productionready.io/api/user

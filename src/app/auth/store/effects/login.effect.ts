@@ -6,9 +6,12 @@ import { map, catchError, switchMap, tap } from 'rxjs/operators';
 import { of } from 'rxjs';
 
 import { HttpErrorResponse } from '@angular/common/http';
-import { loginAction, loginSuccessAction } from '../actions/login.action';
+import {
+    loginAction,
+    loginFailureAction,
+    loginSuccessAction,
+} from '../actions/login.action';
 import { CurrentUserInterface } from '../../../shared/types/currentUser.interface';
-import { registerFailureAction } from '../actions/register.action';
 import { PersistanceService } from '../../../shared/services/persistance.service';
 
 @Injectable()
@@ -27,7 +30,7 @@ export class LoginEffect {
                     }),
                     catchError((errorResponse: HttpErrorResponse) => {
                         return of(
-                            registerFailureAction({
+                            loginFailureAction({
                                 errors: errorResponse.error.errors,
                             })
                         );

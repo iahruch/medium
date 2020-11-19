@@ -14,6 +14,8 @@ import { PersistanceService } from '../shared/services/persistance.service';
 import { LoginComponent } from './components/login/login.component';
 import { LoginEffect } from './store/effects/login.effect';
 import { GetCurrentUserEffect } from './store/effects/getCurrentUser.effect';
+import { UpdateCurrentUserEffect } from './store/effects/updateCurrentUser.effect';
+import { LogoutEffect } from './store/effects/logout.effect';
 
 const routes: Routes = [
     {
@@ -35,6 +37,8 @@ const routes: Routes = [
             RegisterEffect,
             LoginEffect,
             GetCurrentUserEffect,
+            UpdateCurrentUserEffect,
+            LogoutEffect,
         ]),
         RouterModule.forChild(routes),
         FormsModule,
