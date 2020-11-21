@@ -31,13 +31,16 @@ export class SettingsComponet implements OnInit, OnDestroy {
         this.initListener();
         this.initValues();
     }
+
     ngOnDestroy(): void {
         this.currentUserSubscription.unsubscribe();
     }
+
     initValues(): void {
         this.isSubmitting$ = this.store.pipe(select(isSubmittingSelector));
         this.backendErrors$ = this.store.pipe(select(validationErrorsSelector));
     }
+
     initListener(): void {
         this.currentUserSubscription = this.store
             .pipe(select(currentUserSelector), filter(Boolean))
@@ -46,6 +49,7 @@ export class SettingsComponet implements OnInit, OnDestroy {
                 this.initForm();
             });
     }
+
     initForm(): void {
         this.form = this.fb.group({
             image: this.currentUser.image,

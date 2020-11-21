@@ -10,7 +10,7 @@
       <div class="article-preview">
         <div class="article-meta">
           <a [routerLink]="['/profile', article.author.username]">
-            <img [src]="article.author.image" />
+            <img [src]="article.author.image" alt="'img' + article.author.username"/>
           </a>
 
           <div class="info">
@@ -21,7 +21,11 @@
           </div>
 
           <div class="pull-xs-right">
-            ADD FAVORITE
+            <mc-add-to-favorites
+              [isFavorited]="article.favorited"
+              [articleSlug]="article.slug"
+              [favoritesCount]="article.favoritesCount"
+            ></mc-add-to-favorites>
           </div>
         </div>
 
