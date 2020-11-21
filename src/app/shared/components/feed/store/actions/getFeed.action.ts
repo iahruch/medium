@@ -1,6 +1,7 @@
 import { createAction, props } from '@ngrx/store';
 import { ActionTypes } from '../actionTypes';
 import { GetFeedResponseInterface } from '../../types/getFeedResponse.interface';
+import { combineLatest } from 'rxjs';
 
 export const getFeedAction = createAction(
     ActionTypes.GET_FEED,

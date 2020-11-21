@@ -1,4 +1,5 @@
 <button
+  *ngIf="isLoggedIn$ | async"
   (click)="handleLike()"
   [ngClass]="{
   'btn': true,
