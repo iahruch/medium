@@ -43,6 +43,7 @@ export class FeedComponent implements OnInit, OnChanges {
     ngOnInit(): void {
         this.initializeValues();
         this.initializeListener();
+        //console.log('apiUrlProps', this.apiUrlProps);
     }
 
     ngOnChanges(changes: SimpleChanges): void {
@@ -74,13 +75,15 @@ export class FeedComponent implements OnInit, OnChanges {
     fetchFeed() {
         const offset = this.currentPage * this.limit - this.limit;
         const parsedUrl = parseUrl(this.apiUrlProps);
+        //console.log('parsedUrl', parsedUrl);
         const stingifiedParams = stringify({
             limit: this.limit,
             offset: offset,
             ...parsedUrl.query,
         });
-        const apiUrlWithParams = `${this.apiUrlProps}?${stingifiedParams}`;
-        //console.log(apiUrlWithParams);
+        //console.log('stingifiedParams', stingifiedParams);
+        const apiUrlWithParams = `${parsedUrl.url}?${stingifiedParams}`;
+        //console.log('apiUrlWithParams', apiUrlWithParams);
         this.store.dispatch(getFeedAction({ url: apiUrlWithParams }));
     }
 }

@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { combineLatest, Observable, Subscription } from 'rxjs';
 import { ProfileInterface } from '../../../shared/types/profile.interface';
 import { select, Store } from '@ngrx/store';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { getUserProfileAction } from '../../store/actions/getUserProfile.action';
 import {
     errorSelector,
@@ -33,22 +33,17 @@ export class UserProfileComponent implements OnInit, OnDestroy {
     ) {}
 
     ngOnInit(): void {
-        this.initializeValus();
+        this.initializeValues();
         this.initializeListener();
-        this.fetchData();
     }
-    initializeValus(): void {
-        const isFavorited = this.router.url.includes('favorites');
+
+    initializeValues(): void {
         this.slug = this.route.snapshot.paramMap.get('slug');
         this.isLoading$ = this.store.pipe(select(isLoadingSelector));
         this.error$ = this.store.pipe(select(errorSelector));
 
         // определяем урл который будет передан для фетчас фидов. определили исходя из текущего урла
-        this.apiUrl = isFavorited
-            ? `/articles/?favorited=${this.slug}`
-            : `/articles/?author=${this.slug}`;
-
-        this.isCurrentUserProfile$ = combineLatest(
+        http: this.isCurrentUserProfile$ = combineLatest(
             this.store.pipe(select(currentUserSelector), filter(Boolean)),
             this.store.pipe(select(userProfileSelector), filter(Boolean))
         ).pipe(
@@ -69,12 +64,24 @@ export class UserProfileComponent implements OnInit, OnDestroy {
             .subscribe((userProfile: ProfileInterface) => {
                 this.userProfile = userProfile;
             });
+        this.route.params.subscribe((params: Params) => {
+            //console.log('Params', params);
+            this.slug = params.slug;
+            this.fetchUserProfile();
+        });
     }
 
-    fetchData(): void {
+    fetchUserProfile(): void {
         this.store.dispatch(getUserProfileAction({ slug: this.slug }));
     }
     ngOnDestroy(): void {
         this.userProfileSubscription.unsubscribe();
+    }
+
+    getApiUrl(): string {
+        const isFavorited = this.router.url.includes('favorites');
+        return isFavorited
+            ? `/articles?favorited=${this.slug}`
+            : `/articles?author=${this.slug}`;
     }
 }
